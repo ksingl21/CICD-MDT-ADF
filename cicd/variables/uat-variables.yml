@@ -1,0 +1,39 @@
+# UAT Pipeline Variables
+
+variables:
+- name: AzureResourceManagerConnection # Service Principal that has the Contributor RBAC permission to deploy the Data Factory ARM template to the UAT.
+  value: AzureDataFactoryCICD
+
+# Data Factory (ADF)
+- name: DataFactoryName
+  value: udemy-adf-uat
+
+- name: DataFactoryTemplateParametersFilePath
+  value: "$(Build.Repository.LocalPath)/cicd/adf-cicd/adf-uat-template-parameters.json"
+
+- name: ADFResourceGroupName
+  value: kapiltestazure
+
+- name: ADFArtifactName # Data Factory artifact name created during the adf-build.yml job template
+  value: ADFArtifact
+
+
+# Linked ADF ARM Template Deployment Variables
+- name: TemplateSpecsResourceGroupName
+  value: kapiltestazure
+
+- name: TemplateSpecsResourceGroupLocation
+  value: "eastus"
+
+- name: TemplateSpecMasterName
+  value: NewARMTemplateV2_master
+
+- name: TemplateSpecMasterVersionNumber # Version number for the Template Specs. Ex: 1.0.0.0 Ex2: 1.0.0.1 etc.
+  value: "1.0.0.0"
+
+# Shared
+- name: ResourceGroupLocation
+  value: "East US"
+
+- name: Environment
+  value: ADF_UAT
